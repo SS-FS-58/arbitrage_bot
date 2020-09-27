@@ -73,8 +73,9 @@ class telegram():
             return answer_json
 
 if __name__ == "__main__":
-    chat_id    = 'your id'
-    chat_token = 'your token'
+    chat_id    = '1067694510'
+    chat_token = '1170626384:AAHqMP6KYeVPEsQjbwJrB3TN240tfayxv_s'
 
     tg = telegram(chat_token, chat_id)
     result = tg.message("hello my friend!!!")
+    print(result)
