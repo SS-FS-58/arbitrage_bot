@@ -9,6 +9,20 @@ from binance.websockets import BinanceSocketManager
  
 def process_message(msg):
     msg_= msg['E'], msg['t'],msg['p'],msg["q"],msg["T"],msg["m"] #pre-processing
+    # {
+    #     "e": "trade",     // Event type
+    #     "E": 123456789,   // Event time
+    #     "s": "BNBBTC",    // Symbol
+    #     "t": 12345,       // Trade ID
+    #     "p": "0.001",     // Price
+    #     "q": "100",       // Quantity
+    #     "b": 88,          // Buyer order Id
+    #     "a": 50,          // Seller order Id
+    #     "T": 123456785,   // Trade time
+    #     "m": true,        // Is the buyer the market maker?
+    #     "M": true         // Ignore.
+    # }
+
     msg_=json.dumps(msg_)
     with open("ticker.json", "a") as data:
         data.write(msg_)#,msg_['t'],msg_['p'],msg_["q"],msg_["T"],msg_["m"])
