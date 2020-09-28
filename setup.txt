@@ -1,0 +1,4 @@
+https://python-binance.readthedocs.io/en/latest/overview.html
+install visual studio builder tools
+pip install --upgrade setuptools
+pip install python-binance
