@@ -1,0 +1,4 @@
+2020-10-02 03:05:53,147 - INFO => : Able to get current server time.
+2020-10-02 03:05:53,481 - INFO => : We got prices.
+2020-10-02 03:05:53,482 - INFO => : We can get all prices listed with this endpoint.
+2020-10-02 03:05:53,799 - INFO => : We have no orders from ETHBTC so the API raises MalformedRequest.
