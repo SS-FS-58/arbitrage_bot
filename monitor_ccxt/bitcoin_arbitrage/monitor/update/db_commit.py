@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 # from bitcoin_arbitrage.app import db
-from bitcoin_arbitrage.models import Spread, Exchange
+# from bitcoin_arbitrage.models import Spread, Exchange
 from bitcoin_arbitrage.monitor.update import UpdateAction
 
 
@@ -16,7 +16,7 @@ class SpreadHistoryToDB(UpdateAction):
                                     last_ask_price=spread.exchange_buy.last_ask_price,
                                     last_bid_price=spread.exchange_buy.last_bid_price)
             # db.session.add(exchange_buy)
-            exchange_buy.save()
+            # exchange_buy.save()
 
             exchange_sell = Exchange(name=spread.exchange_sell.name,
                                      currency_pair=spread.exchange_sell.currency_pair,

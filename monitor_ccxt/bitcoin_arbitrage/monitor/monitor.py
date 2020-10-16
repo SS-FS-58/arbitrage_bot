@@ -1,7 +1,8 @@
-import asyncio
+# import asyncio
 import itertools
 from datetime import datetime
 from typing import List
+from time import sleep
 
 from bitcoin_arbitrage.monitor import settings
 from bitcoin_arbitrage.monitor.exchange import Exchange
@@ -16,20 +17,26 @@ class Monitor:
         self._last_spreads: List[Spread] = []
         print('-----starting monitor! ')
 
-    async def update(self) -> None:
+    # async def update(self) -> None:
+    def update(self) -> None:
         while True:
             logger.debug('Update...')
+
+            print("updating start!")
 
             for exchange in settings.EXCHANGES:
                 exchange.update_prices()
 
             spreads = self._calculate_spreads()
+
+            print('spreads :  ', str(spreads))
             timestamp = datetime.now().timestamp()
 
             for action in settings.UPDATE_ACTIONS:
                 action.run(spreads, settings.EXCHANGES, timestamp)  # ToDo: Run every action asynchronously?
 
-            await asyncio.sleep(settings.UPDATE_INTERVAL)
+            # await asyncio.sleep(settings.UPDATE_INTERVAL)
+            sleep(settings.UPDATE_INTERVAL)
 
     def _calculate_spreads(self) -> List[Spread]:
         combinations: List[(Exchange, Exchange)] = itertools.combinations(settings.EXCHANGES, 2)

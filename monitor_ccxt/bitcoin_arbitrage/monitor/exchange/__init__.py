@@ -48,7 +48,9 @@ class Exchange(ABC):
 
     # ToDo: Make async
     def update_prices(self) -> None:
+        print('Geting url : ', self.ticker_url)
         response = requests.get(self.ticker_url)
+        
         if response.status_code != 200:
             logger.warning('Could not update prices. API returned status != 200.')
             return
@@ -56,6 +58,8 @@ class Exchange(ABC):
             json_response = response.json()
             self.last_ask_price = float(json_response.get('ask'))
             self.last_bid_price = float(json_response.get('bid'))
+            print("last ask price : ", self.last_ask_price)
+            print("last bid price : ", self.last_bid_price)
         except json.decoder.JSONDecodeError or TypeError:
             logger.error('Could not update prices. Error on json processing:')
             logger.error(sys.exc_info())
