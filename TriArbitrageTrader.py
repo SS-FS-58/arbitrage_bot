@@ -2,7 +2,7 @@
 # import ccxt
 from binance.client import Client
 # from binance.enums import *
-from api_key import API_KEY, SECRET_KEY
+from api_key import BINANCE_API_KEY, BINANCE_SECRET_KEY
 # binance = ccxt.binance()
 client = Client(API_KEY, SECRET_KEY)
 print(client)

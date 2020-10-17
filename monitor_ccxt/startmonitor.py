@@ -38,8 +38,7 @@ class Command():
         for proc in psutil.process_iter():
             if proc.info["name"] == ...:
                 proc.terminate()
-        """
-        
+        """        
         raise NotImplementedError() from None        
 
 

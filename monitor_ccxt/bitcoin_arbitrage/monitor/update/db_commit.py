@@ -16,7 +16,7 @@ class SpreadHistoryToDB(UpdateAction):
                                     last_ask_price=spread.exchange_buy.last_ask_price,
                                     last_bid_price=spread.exchange_buy.last_bid_price)
             # db.session.add(exchange_buy)
-            # exchange_buy.save()
+            exchange_buy.save()
 
             exchange_sell = Exchange(name=spread.exchange_sell.name,
                                      currency_pair=spread.exchange_sell.currency_pair,
@@ -26,8 +26,8 @@ class SpreadHistoryToDB(UpdateAction):
             exchange_sell.save()
 
             s = Spread(spread=spread.spread,
-                       exchange_buy=exchange_buy,
-                       exchange_sell=exchange_sell)
+                       xchange_buy=exchange_buy,
+                       xchange_sell=exchange_sell)
             # db_spreads.append(s)
             s.save()
 
