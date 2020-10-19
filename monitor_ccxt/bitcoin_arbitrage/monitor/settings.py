@@ -38,10 +38,10 @@ TRI_EXCHANGES = [
         "exchange": Binance(),
         "currenciesList":[
             ['BNBBTC', 'ADABNB', 'ADABTC'],
-            # ['BNBBTC', 'ANTBNB', 'ANTBTC'],
-            # ['BNBBTC', 'ATOMBNB', 'ATOMBTC'],
-            # ['BNBBTC', 'AVABNB', 'AVABTC'],
-            # ['BNBBTC', 'AVAXBNB', 'AVAXBTC'],
+            ['BNBBTC', 'ANTBNB', 'ANTBTC'],
+            ['BNBBTC', 'ATOMBNB', 'ATOMBTC'],
+            ['BNBBTC', 'AVABNB', 'AVABTC'],
+            ['BNBBTC', 'AVAXBNB', 'AVAXBTC'],
         ],
     },
 ]

@@ -15,6 +15,9 @@ class Binance():
     def __init__(self, api_key: str=BINANCE_API_KEY, secret_key: str=BINANCE_SECRET_KEY, ):
         self.client = Client(api_key, secret_key)
         # self.fees = self.client.get_trade_fee()
+    @property
+    def name(self) -> str:
+        return str(self.__class__.__name__)
 
     def update_prices(self) -> bool:
         print('updated prices of binance.')
@@ -24,5 +27,6 @@ class Binance():
             return True
         except:
             return False
-
+    def __str__(self):
+        return f"{self.name}"
     

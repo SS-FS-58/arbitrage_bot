@@ -10,6 +10,7 @@ from bitcoin_arbitrage.monitor.update import UpdateAction
 
 class AbstractSpreadToCSV(UpdateAction):
     from bitcoin_arbitrage.monitor.spread_detection.exchange import Spread
+    from bitcoin_arbitrage.monitor.spread_detection.triangular import Tri_Spread
 
     def __init__(self, filename: str, should_override: bool, spread_threshold: Optional[int] = None) -> None:
         super().__init__(spread_threshold)
@@ -52,7 +53,7 @@ class AbstractSpreadToCSV(UpdateAction):
             with open(self.filename, 'a') as file:
                 w = csv.DictWriter(file, self.header)
                 w.writerows(rows)
-    def run_tri(self, spreads: List[Spread], exchanges: List[Exchange], timestamp: float) -> None:
+    def run_tri(self, spreads: List[Tri_Spread], exchanges: List[Exchange], timestamp: float) -> None:
         # Create file if it does not yet exist
         if not os.path.isfile(self.filename):
             f = open(self.filename, 'w+')

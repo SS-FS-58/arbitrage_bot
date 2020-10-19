@@ -86,7 +86,7 @@ class Tri_Spread(SpreadABC):
         else:
             print("No Arbitrage Possibility")
 
-        return float(rate1) - float(rate2)
+        return float(rate2) - float(rate1)
 
     # def is_above_trading_thresehold(self) -> bool:
     #     return self.spread > settings.MINIMUM_SPREAD_TRADING
