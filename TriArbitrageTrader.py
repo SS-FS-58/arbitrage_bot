@@ -2,7 +2,7 @@
 # import ccxt
 from binance.client import Client
 # from binance.enums import *
-from api_key import BINANCE_API_KEY, BINANCE_SECRET_KEY
+from api_key import API_KEY, SECRET_KEY
 # binance = ccxt.binance()
 client = Client(API_KEY, SECRET_KEY)
 print(client)
@@ -45,7 +45,7 @@ def initialize_arb():
         list_of_arb_sym.append(['BNBBTC', 'AVABNB', 'AVABTC'])
         list_of_arb_sym.append(['BNBBTC', 'AVAXBNB', 'AVAXBTC'])
 
-        # fees = client.get_trade_fee()
+        fees = client.get_trade_fee(timestamp = 50000)
 
         while True:
             # Run Arbitrage Profit Functionality - To Determine Highest Profit Percentage - Cont Loop

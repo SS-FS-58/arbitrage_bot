@@ -50,7 +50,6 @@ class Exchange(ABC):
     def update_prices(self) -> None:
         print('Geting url : ', self.ticker_url)
         response = requests.get(self.ticker_url)
-        
         if response.status_code != 200:
             logger.warning('Could not update prices. API returned status != 200.')
             return

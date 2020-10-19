@@ -18,7 +18,7 @@ CurrencyPair = (
     ('BCH_USD', BCH_USD),
     ('BCH_EUR', BCH_EUR),
     ('ETH_USD', ETH_USD),
-    ('ETH_EUR', ETH_EUR),
+    ('ETH_EUR', ETH_EUR),   
 )
 
 
@@ -38,6 +38,8 @@ class Exchange(BaseModel):
             return '€'
         elif self.currency_pair in [BTC_USD, BCH_USD, ETH_USD]:
             return '$'
+        else:
+            return '%'
 
 
 class Spread(BaseModel):
@@ -56,4 +58,25 @@ class Spread(BaseModel):
     def save(self, *args, **kwargs):
         self.exchange_buy_id = self.xchange_buy.pk
         self.exchange_sell_id = self.xchange_sell.pk
+        super().save(*args, **kwargs)
+
+class Tri_Spread(BaseModel):
+
+    class Meta:
+        ordering = ["-recorded_date"]
+        db_table = 'tri_spread'
+
+    tri_exchange_buy1_id = models.IntegerField()
+    tri_exchange_sell_id = models.IntegerField()
+    tri_exchange_buy2_id = models.IntegerField()
+    tri_xchange_buy1 = models.ForeignKey(Exchange, on_delete=models.CASCADE, related_name="tri_exchange_buy1")
+    tri_xchange_buy2 = models.ForeignKey(Exchange, on_delete=models.CASCADE, related_name="tri_exchange_buy2")
+    tri_xchange_sell = models.ForeignKey(Exchange, on_delete=models.CASCADE, related_name="tri_exchange_sell")
+    recorded_date = models.DateTimeField(auto_now_add=True)
+    tri_spread = models.IntegerField(blank=True)
+
+    def save(self, *args, **kwargs):
+        self.tri_exchange_buy1_id = self.tri_xchange_buy1.pk
+        self.tri_exchange_buy2_id = self.tri_xchange_buy2.pk
+        self.tri_exchange_sell_id = self.tri_xchange_sell.pk
         super().save(*args, **kwargs)
